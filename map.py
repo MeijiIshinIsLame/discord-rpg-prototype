@@ -2,6 +2,7 @@ from tile import MapTile
 from itertools import repeat
 import random
 from PIL import Image, ImageDraw
+from tqdm import tqdm
 
 tiles = []
 TILE_SIZE = 32
@@ -57,6 +58,7 @@ class Map:
 		draw = ImageDraw.Draw(image)
 		
 		# Iterate through each tile in the map
+		#for i in tqdm(range(self.width * self.height)):
 		for y, row in enumerate(self.tilegrid):
 			for x, tile in enumerate(row):
 				# Calculate the position of the tile in pixels
@@ -68,6 +70,6 @@ class Map:
 		# Save the image to a file
 		image.save(filename, "PNG")
 
-new_map = Map(100, 100, tiles)
+new_map = Map(100, 50, tiles)
 new_map.print_map()
 new_map.render_map_to_image("test.png")
